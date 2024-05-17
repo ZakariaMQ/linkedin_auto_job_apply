@@ -10,4 +10,14 @@ document.getElementById('startBtn').addEventListener('click', () => {
       });
     });
 });
+
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+    if (message.action === "displayMessage") {
+      const messageDiv = document.createElement('div');
+      messageDiv.id = 'message';
+      messageDiv.textContent = message.message;
+  
+      document.body.appendChild(messageDiv);
+    }
+  });
   

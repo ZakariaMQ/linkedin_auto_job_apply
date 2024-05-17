@@ -19,4 +19,9 @@ browser.runtime.onMessage.addListener((request, sender, sendResponse) => {
       });
     }
 });
-  
+
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+    if (message.action === "displayMessage") {
+       chrome.runtime.sendMessage({ action: "displayMessage", message: message.message });
+    }
+  });
