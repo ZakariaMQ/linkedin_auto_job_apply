@@ -5,10 +5,10 @@
   "description": "Automatically apply for jobs on LinkedIn.",
   "permissions": ["activeTab", "storage", "scripting"],
   "background": {
-    "service_worker": "background.js"
+    "scripts": ["background.js"]
   },
 
-  "browser_action": {
+  "action": {
     "default_popup": "popup.html",
     "default_icon": {
       "16": "icons/icon.png",
