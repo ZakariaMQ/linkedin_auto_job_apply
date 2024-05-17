@@ -9,12 +9,14 @@ browser.browserAction.onClicked.addListener((tab) => {
   });
   
 browser.runtime.onMessage.addListener((request, sender, sendResponse) => {
-    if (request.action === "applyJobs") {
-      browser.tabs.create({ url: "https://www.linkedin.com/jobs/" }, (newTab) => {
-        browser.tabs.executeScript(newTab.id, {
-          file: 'applyJobs.js'
+    if (request.action === "startApplying") {
+      browser.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+        browser.tabs.sendMessage(tabs[0].id, {
+          action: "startApplying",
+          numJobs: request.numJobs,
+          delay: request.delay
         });
       });
     }
-  });
+});
   

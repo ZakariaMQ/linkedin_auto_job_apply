@@ -11,10 +11,10 @@
 <body>
   <div class="container">
     <h1>Job Application Automator</h1>
-    <label for="jobKeywords">Job Keywords:</label><br>
-    <input type="text" id="jobKeywords"><br>
-    <label for="location">Location:</label><br>
-    <input type="text" id="location"><br>
+    <label for="numJobs">Number of Jobs:</label><br>
+    <input type="number" id="numJobs" min="1"><br>
+    <label for="delay">Delay (ms):</label><br>
+    <input type="number" id="delay" min="0"><br>
     <button id="startBtn" class="btn">Start Applying</button>
   </div>
   <script src="popup.js"></script>
