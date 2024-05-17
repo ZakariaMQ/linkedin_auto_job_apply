@@ -1,0 +1,33 @@
+{
+    "manifest_version": 3,
+    "name": "LinkedIn Job Application Automator",
+    "version": "1.0",
+    "description": "Automatically apply for jobs on LinkedIn.",
+    "permissions": ["activeTab", "storage", "scripting"],
+    "background": {
+      "scripts": "background.js"
+    },
+
+    "browser_action": {
+      "default_popup": "popup.html",
+      "default_icon": {
+        "16": "icons/icon.png",
+        "48": "icons/icon.png",
+        "128": "icons/icon.png"
+      }
+    },
+
+    "icons": {
+      "16": "icons/icon.png",
+      "48": "icons/icon.png",
+      "128": "icons/icon.png"
+    },
+    
+    "content_scripts": [
+      {
+        "matches": ["*://*.linkedin.com/*"],
+        "js": ["content.js"]
+      }
+    ]
+  }
+  
