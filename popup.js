@@ -1,23 +1,20 @@
 document.getElementById('startBtn').addEventListener('click', () => {
-    const numJobs = document.getElementById('numJobs').value;
-    const delay = document.getElementById('delay').value;
+  const numJobs = document.getElementById('numJobs').value;
+  const delay = document.getElementById('delay').value;
   
-    browser.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-      browser.tabs.sendMessage(tabs[0].id, {
-        action: "startApplying",
-        numJobs: parseInt(numJobs),
-        delay: parseInt(delay)
-      });
-    });
-});
+  let messageDiv = document.getElementById('messageDiv');
+  if (!messageDiv) {
+    messageDiv = document.createElement('div');
+    messageDiv.id = 'messageDiv';
+    document.body.appendChild(messageDiv);
+  }
+  messageDiv.textContent = `You are going to apply for ${numJobs} Jobs with a delay of ${delay} ms`;
 
-chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-    if (message.action === "displayMessage") {
-      const messageDiv = document.createElement('div');
-      messageDiv.id = 'message';
-      messageDiv.textContent = message.message;
-  
-      document.body.appendChild(messageDiv);
-    }
+  browser.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+    browser.tabs.sendMessage(tabs[0].id, {
+      action: "startApplying",
+      numJobs: parseInt(numJobs),
+      delay: parseInt(delay)
+    });
   });
-  
+});
