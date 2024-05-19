@@ -28,7 +28,7 @@ function scrollAndFindJobs(numJobs, delay) {
           jobElements = Array.from(newJobElements);
           console.log(`Found ${jobElements.length}`);
 
-          con newHeight = jobsListContainer.scrollHeight;
+          const newHeight = jobsListContainer.scrollHeight;
 
           if (newHeight === lastHeight || jobElements.length >= numJobs) {
               clearInterval(intervalId);
